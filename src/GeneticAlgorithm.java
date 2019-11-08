@@ -16,7 +16,7 @@ public class GeneticAlgorithm {
     private SalesmanRoute bestRoute;
     private double bestRouteFitness = Integer.MIN_VALUE;
     private double worstPathCost = Integer.MIN_VALUE;
-    private final double mutationChance = 0.005;
+    private final double mutationChance = 0.015;
 
     public GeneticAlgorithm() {
 
