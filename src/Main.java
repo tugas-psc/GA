@@ -43,15 +43,21 @@ public class Main {
             e.printStackTrace();
         }
         //test
-        Population population = new Population(cityRepresentation);
-        population.generateAll();
-        for (int i = 0; i < 10; i++) {
-            List<City> listOfCity = population.getRoute(i);
-            for (int j = 0; j < listOfCity.size(); j++) {
-                System.out.println(listOfCity.get(j).getIdentifier());
-            }
-            System.out.println("Next City");
+        Population firstPopulation = new Population(cityRepresentation);
+        firstPopulation.generateAll();
+        GeneticAlgorithm geneticAlgorithm = new GeneticAlgorithm();
+        Population parentPopulation = firstPopulation;
+        long start = System.currentTimeMillis();
+        for(int i=1;i<=100;i++){
+            
+            parentPopulation = geneticAlgorithm.findBestRoute(i,parentPopulation);
+           
         }
+        long end = System.currentTimeMillis()-start;
+        System.out.println("path cost terbaik"+geneticAlgorithm.getBestRoute().getPathCost());
+        System.out.println("path yang diambil"+geneticAlgorithm.getBestRoute().getAllCityIdentifier());
+        System.out.println("Path cost terburuk "+geneticAlgorithm.getWorstPathCost());
+        System.out.println("waktu yang dibutuhkan" + end+" MS");
 
     }
 }

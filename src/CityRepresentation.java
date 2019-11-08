@@ -13,6 +13,8 @@ import java.util.Random;
  *
  * @author Stephen
  */
+
+//modelling for all available city
 public class CityRepresentation {
     private ArrayList<City> listOfCity;
     public CityRepresentation(){

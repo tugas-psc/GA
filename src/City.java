@@ -30,6 +30,11 @@ public class City {
     public int getY() {
         return y;
     }
+    public double calDistance(City city){
+        int xDistance=  Math.abs(this.x+city.x);
+        int yDistance = Math.abs(this.y-city.y);
+        return Math.sqrt((xDistance*xDistance) + (yDistance*yDistance));
+    }
     
    
 }
