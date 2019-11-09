@@ -19,19 +19,23 @@ public class Population {
         listOfPopulation = new SalesmanRoute[10]; // population 10 dahulu
         this.cityRepresentation = cityRepresentation;
     }
+    //empty constructor
     public Population(){
         this.listOfPopulation = new SalesmanRoute[10];
     }
+    //generate populasi awal
     public void generateAll(){
         for(int i=0;i<10;i++){
             listOfPopulation[i] = new SalesmanRoute(this.cityRepresentation);
             listOfPopulation[i].generateRoute();
         }
     }
+    // mengembalikan individu
     public SalesmanRoute getRoute(int i){
         return listOfPopulation[i];
     }
- 
+    
+    // mencari individu dengan fitness function tertinggi
     public SalesmanRoute getFittest(){
         SalesmanRoute fittest=listOfPopulation[0];
         for(int i=1;i<listOfPopulation.length;i++){
@@ -41,6 +45,7 @@ public class Population {
         }
         return fittest;
     }
+    // mengembalikan nilai path cost tertinggi
     public double getWorstPathCost(){
         double worst=listOfPopulation[0].getPathCost();
         for(int i=1;i<listOfPopulation.length;i++){
@@ -50,12 +55,16 @@ public class Population {
         }
         return worst;
     }
+    // mengembalikan ukuran populasi
     public int getSize(){
         return this.listOfPopulation.length;
     }
+    // menambahkan individu dengan indeks
     public void addSalesManRoute(int indeks,SalesmanRoute route){
         this.listOfPopulation[indeks] = route;
     }
+    
+    // berguna untuk mengambil semua fitness function, method ini dipanggil saat mencari parents candidate
     public double[] getAllFitnessFunction(){
         if(fitnessFunction != null){
             return fitnessFunction;

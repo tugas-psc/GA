@@ -12,6 +12,7 @@ import java.util.Random;
 /**
  *
  * @author Stephen
+ * berisi seluruh kota yang ada. dan digunakan untuk men-generate populasi pertama kali
  */
 
 //modelling for all available city
@@ -26,12 +27,14 @@ public class CityRepresentation {
     public void getCity(int i){
         listOfCity.get(i);
     }
+    // generate populasi pertama
     public List<City> generateCity(){
         Random random = new Random();
         List<City> generatedListOfCity = new ArrayList<City>();
         List<City> temp = new ArrayList<City>();
         temp.addAll(listOfCity);
         for(int i=0;i<listOfCity.size();i++){
+            // random number dan memasukkan pada list of city yang baru dan remove temp agar tidak ada duplicate
             int n =random.nextInt(temp.size());
             generatedListOfCity.add(temp.get(n));
             temp.remove(n);

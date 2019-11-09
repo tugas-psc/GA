@@ -10,6 +10,7 @@ import java.util.List;
 /**
  *
  * @author Stephen
+ * kelas untuk fungsi GA
  */
 public class GeneticAlgorithm {
 
@@ -21,37 +22,48 @@ public class GeneticAlgorithm {
     public GeneticAlgorithm() {
 
     }
-
+    
+    // main method
     public Population findBestRoute(int indeks, Population previousGeneration) {
         Population newGeneration = new Population();
+        
+        //elitism
         SalesmanRoute fittest = previousGeneration.getFittest();
         newGeneration.addSalesManRoute(0, fittest);
+        
         for (int i = 1; i < newGeneration.getSize(); i++) {
+//          dapatkan kandidat untuk parent 1 dan parent 2 dan mencegah parent 1 dan parent 2 adalah parent yang sama
             SalesmanRoute parent1 = getParentCandidate(previousGeneration);
             SalesmanRoute parent2 = getParentCandidate(previousGeneration);
             while (parent2 == parent1) {
                 parent2 = getParentCandidate(previousGeneration);
             }
-//            System.out.println(parent1);
-//            System.out.println(parent2);
+            
+            //fungsi crossover
             SalesmanRoute child = this.crossOver(parent1, parent2);
+            //mutate
             this.mutate(child);
             newGeneration.addSalesManRoute(i, child);
 
         }
+        
+        // untuk menyimpan individu terbaik
         SalesmanRoute bestOfPopulation = newGeneration.getFittest();
         if (bestRouteFitness < bestOfPopulation.getFitnessFunction()) {
             bestRoute = bestOfPopulation;
             bestRouteFitness = bestOfPopulation.getFitnessFunction();
         }
+        
+        // mengambil pathcost terburuk
         if (worstPathCost < newGeneration.getWorstPathCost()) {
             worstPathCost = newGeneration.getWorstPathCost();
         }
+        // memberi tahu setiap 10 generasi path cost terbaik
         if (indeks % 10 == 0) {
             System.out.println("path cost terbaik untuk generasi ke-"
                     + indeks + " " + newGeneration.getFittest().getPathCost());
         }
-
+        // mengembalikan new generation
         return newGeneration;
     }
 
@@ -66,17 +78,25 @@ public class GeneticAlgorithm {
     public SalesmanRoute getParentCandidate(Population previousGeneration) {
         double[] fitnessFunction = previousGeneration.getAllFitnessFunction();
         double divider = 0;
+        
+        // berfungsi sebagai pembagi dari fitness function
         for (int i = 0; i < fitnessFunction.length; i++) {
             divider += fitnessFunction[i];
         }
+        
+        // asign setiap fitness function dengan pembagi
         for (int i = 0; i < fitnessFunction.length; i++) {
             fitnessFunction[i] = fitnessFunction[i] / divider;
         }
         double chances = Math.random();
+        
+//      cek apakah fitness function lebih besar dari chances 
+//      jika tidak ada yang lebih besar mengembalikan fitness function paling akhir
         if (fitnessFunction[0] > chances) {
             return previousGeneration.getRoute(0);
         }
         for (int i = 1; i < fitnessFunction.length; i++) {
+            // setiap fitness function akan ditambah dengan fitness function sebelumnya
             fitnessFunction[i] += fitnessFunction[i - 1];
             if (fitnessFunction[i] > chances) {
                 return previousGeneration.getRoute(i);
@@ -93,6 +113,7 @@ public class GeneticAlgorithm {
             child.addRoute(parent1.getCity(i));
         }
         for (int i = cutPos; i < max; i++) {
+            // jika dalam child sudah ada kota tersebut maka akan dicari kota yang tidak ada dalam child tersebut
             if (!child.isContain(parent2.getCity(i))) {
                 child.addRoute(parent2.getCity(i));
             } else {

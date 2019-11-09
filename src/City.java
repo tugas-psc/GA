@@ -7,6 +7,7 @@
 /**
  *
  * @author Stephen
+ * model untuk City berisi indentifier,lokasi x,y juga menghitung jarak dengan kota lainnya
  */
 public class City {
     private int identifier; // kota ke berapa
