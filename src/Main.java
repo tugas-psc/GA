@@ -54,9 +54,9 @@ public class Main {
            
         }
         long end = System.currentTimeMillis()-start;
-        System.out.println("path cost terbaik"+geneticAlgorithm.getBestRoute().getPathCost());
+        System.out.printf("path cost terbaik %.3f \n", geneticAlgorithm.getBestRoute().getPathCost());
         System.out.println("path yang diambil"+geneticAlgorithm.getBestRoute().getAllCityIdentifier());
-        System.out.println("Path cost terburuk "+geneticAlgorithm.getWorstPathCost());
+        System.out.printf("Path cost terburuk %.3f \n", geneticAlgorithm.getWorstPathCost());
         System.out.println("waktu yang dibutuhkan" + end+" MS");
 
     }

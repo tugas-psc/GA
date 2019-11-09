@@ -60,8 +60,8 @@ public class GeneticAlgorithm {
         }
         // memberi tahu setiap 10 generasi path cost terbaik
         if (indeks % 10 == 0) {
-            System.out.println("path cost terbaik untuk generasi ke-"
-                    + indeks + " " + newGeneration.getFittest().getPathCost());
+            System.out.printf("path cost terbaik untuk generasi ke-"
+                    + indeks + " %.3f\n" ,newGeneration.getFittest().getPathCost());
         }
         // mengembalikan new generation
         return newGeneration;
