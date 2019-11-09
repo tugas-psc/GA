@@ -35,8 +35,7 @@ public class Population {
     public SalesmanRoute getFittest(){
         SalesmanRoute fittest=listOfPopulation[0];
         for(int i=1;i<listOfPopulation.length;i++){
-            if(listOfPopulation[i].getFitnessFunction()> fittest.getFitnessFunction() && 
-                    !listOfPopulation[i].isDuplicate()){
+            if(listOfPopulation[i].getFitnessFunction()> fittest.getFitnessFunction()){
                 fittest = listOfPopulation[i];
             }
         }

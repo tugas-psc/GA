@@ -84,19 +84,4 @@ public class SalesmanRoute {
         }
         return n;
     }
-
-    public boolean isDuplicate() {
-        this.sortedRoute = new int[this.route.size()];
-        for (int i = 0; i < route.size(); i++) {
-            sortedRoute[i] = this.route.get(i).getIdentifier();
-        }
-        Arrays.sort(sortedRoute);
-        for (int i = 1; i < sortedRoute.length; i++) {
-            if (sortedRoute[i] == sortedRoute[i - 1]) {
-                return true;
-            }
-        }
-
-        return false;
-    }
 }
