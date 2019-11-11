@@ -16,7 +16,6 @@ import java.util.Scanner;
 public class Main {
 
     public static void main(String[] args) {
-        System.out.println("masukkan berapa banyak city yang akan diambil");
         Scanner sc = new Scanner(System.in);
 //        int cityCount = sc.nextInt();
         CityRepresentation cityRepresentation = new CityRepresentation();
@@ -27,9 +26,21 @@ public class Main {
 //            int y = sc.nextInt();
 //            cityRepresentation.add(identifier, x, y);
 //        }
-
+        System.out.println("masukkan test case yang diinginkan, 1 untuk 101-city problem dan 2 untuk 51-city problem");
+        int inputCity = sc.nextInt();
+        String fileName ="";
+        switch(inputCity){
+            case 1:
+                fileName = "testcase.txt";
+                break;
+            case 2:
+                fileName = "testcase2.txt";
+                break;
+            default:
+                System.out.println("salah input");
+        }
         try {
-            File f = new File("testcase.txt");
+            File f = new File(fileName);
             Scanner sc2 = new Scanner(f);
             while(sc2.hasNextLine()){
                 String[] n =sc2.nextLine().split(" ");
