@@ -24,9 +24,6 @@ public class CityRepresentation {
     public void add(int identifier,int x,int y){
         this.listOfCity.add(new City(identifier,x,y));
     }
-    public void getCity(int i){
-        listOfCity.get(i);
-    }
     // generate populasi pertama
     public List<City> generateCity(){
         Random random = new Random();

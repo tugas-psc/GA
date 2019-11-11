@@ -17,15 +17,7 @@ public class Main {
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-//        int cityCount = sc.nextInt();
         CityRepresentation cityRepresentation = new CityRepresentation();
-//        System.out.println("masukkan sebanyak city yang dipilih  diurutkan dengan kota ke berapa,posisi x,posisi y");
-//        for(int i=0;i<cityCount;i++){
-//            int identifier = sc.nextInt();
-//            int x = sc.nextInt();
-//            int y = sc.nextInt();
-//            cityRepresentation.add(identifier, x, y);
-//        }
         System.out.println("masukkan test case yang diinginkan, 1 untuk 101-city problem dan 2 untuk 51-city problem");
         int inputCity = sc.nextInt();
         String fileName ="";
