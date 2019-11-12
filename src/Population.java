@@ -16,16 +16,16 @@ public class Population {
     private CityRepresentation cityRepresentation;
     private double[] fitnessFunction;
     public Population(CityRepresentation cityRepresentation){
-        listOfPopulation = new SalesmanRoute[10]; // population 10 dahulu
+        listOfPopulation = new SalesmanRoute[50]; 
         this.cityRepresentation = cityRepresentation;
     }
     //empty constructor
     public Population(){
-        this.listOfPopulation = new SalesmanRoute[10];
+        this.listOfPopulation = new SalesmanRoute[50];
     }
     //generate populasi awal
     public void generateAll(){
-        for(int i=0;i<10;i++){
+        for(int i=0;i<listOfPopulation.length;i++){
             listOfPopulation[i] = new SalesmanRoute(this.cityRepresentation);
             listOfPopulation[i].generateRoute();
         }

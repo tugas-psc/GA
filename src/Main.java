@@ -51,7 +51,7 @@ public class Main {
         GeneticAlgorithm geneticAlgorithm = new GeneticAlgorithm();
         Population parentPopulation = firstPopulation;
         long start = System.currentTimeMillis();
-        for(int i=1;i<=100;i++){
+        for(int i=1;i<=1000;i++){
             
             parentPopulation = geneticAlgorithm.findBestRoute(i,parentPopulation);
            

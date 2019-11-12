@@ -59,7 +59,7 @@ public class GeneticAlgorithm {
             worstPathCost = newGeneration.getWorstPathCost();
         }
         // memberi tahu setiap 10 generasi path cost terbaik
-        if (indeks % 10 == 0) {
+        if (indeks % 100 == 0) {
             System.out.printf("path cost terbaik untuk generasi ke-"
                     + indeks + " %.3f\n" ,newGeneration.getFittest().getPathCost());
         }
